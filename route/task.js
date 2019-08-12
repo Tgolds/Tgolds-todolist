@@ -15,7 +15,6 @@ router.post('/', async (req, res) => {
     res.send(task);
 });
 
-// /task/1,2,3,4,5,6,7
 router.delete('/', async (req, res) => {
     const { ids } = req.body;
     await Task.deleteMany({
@@ -26,14 +25,12 @@ router.delete('/', async (req, res) => {
     res.send('ok');
 });
 
-// /task/:id/status
 router.put('/status', async (req, res) => {
     const { id, completed } = req.body;
     await Task.updateOne({ _id: id }, { completed });
     res.send('ok');
 });
 
-// /task/:id/title
 router.put('/title', async (req, res) => {
     const { id, title } = req.body;
     await Task.updateOne({ _id: id }, { title });
